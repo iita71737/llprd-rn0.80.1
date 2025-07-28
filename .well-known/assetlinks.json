@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.esgoalprd",
+      "sha256_cert_fingerprints": [
+        "65:72:E0:A2:C2:8C:70:4B:1D:21:BD:2C:77:A9:62:98:6D:C8:33:89:A1:03:9B:6C:4E:EC:9A:A7:1B:C9:D1:47"
+      ]
+    }
+  }
+]
