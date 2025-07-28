@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "esgoaldev.app"
-               BlueprintName = "esgoaldev"
-               ReferencedContainer = "container:esgoaldev.xcodeproj">
+               BuildableName = "esgoalprd.app"
+               BlueprintName = "esgoalprd"
+               ReferencedContainer = "container:esgoalprd.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "esgoaldevTests.xctest"
-               BlueprintName = "esgoaldevTests"
-               ReferencedContainer = "container:esgoaldev.xcodeproj">
+               BuildableName = "esgoalprdTests.xctest"
+               BlueprintName = "esgoalprdTests"
+               ReferencedContainer = "container:esgoalprd.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "esgoaldev.app"
-            BlueprintName = "esgoaldev"
-            ReferencedContainer = "container:esgoaldev.xcodeproj">
+            BuildableName = "esgoalprd.app"
+            BlueprintName = "esgoalprd"
+            ReferencedContainer = "container:esgoalprd.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "esgoaldev.app"
-            BlueprintName = "esgoaldev"
-            ReferencedContainer = "container:esgoaldev.xcodeproj">
+            BuildableName = "esgoalprd.app"
+            BlueprintName = "esgoalprd"
+            ReferencedContainer = "container:esgoalprd.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

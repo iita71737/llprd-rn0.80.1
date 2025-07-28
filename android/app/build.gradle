@@ -80,9 +80,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.esgoaldev"
+    namespace "com.esgoalprd"
     defaultConfig {
-        applicationId "com.esgoaldev"
+        applicationId "com.esgoalprd"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1 //版本碼(版本大號) 打包至google play console前要手動更新
