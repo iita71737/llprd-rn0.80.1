@@ -3,7 +3,7 @@ import {
   StatusBar,
   Text,
   Alert,
-  SafeAreaView,
+  // SafeAreaView,
   View,
   Modal,
   Platform,
@@ -27,7 +27,6 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/
 import { createStackNavigator } from '@react-navigation/stack'
 import $color from '@/__reactnative_stone/global/color'
 import $theme from '@/__reactnative_stone/global/theme'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
 import $config from '@/__config'
 import { useTranslation } from 'react-i18next'
 import S_API_Auth from '@/__reactnative_stone/services/api/v1/auth'
@@ -88,6 +87,7 @@ import { check, request, PERMISSIONS, RESULTS, openSettings } from 'react-native
 import AndroidOpenSettings from 'react-native-android-open-settings'
 import { getLocation, getGeocode } from '@/__reactnative_stone/global/location'
 import { getDistance } from 'geolib';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 
 const RoutesMain = ({ navigation }) => {
   const { t, i18n } = useTranslation()
@@ -646,108 +646,120 @@ const RoutesMain = ({ navigation }) => {
         </Modal>
       ) : (
         <SafeAreaProvider>
-          <StatusBar
-            barStyle="dark-content"
-            backgroundColor="white"
-            translucent={false}
-          />
-          <NavigationContainer
-            theme={scheme === 'light' ? MyThemes.light : MyThemes.dark}
-            linking={{
-              prefixes: [
-                'https://www.esgoal.com/',
-                'https://ll-esh-app.wasateam.com/',
-                'esgoal://',
-                'https://ll-esgoal.dev.wasateam.com/'
-              ],
-              config: {
-                screens: $ws.$h.route.getDeeplinks()
-              },
-              async getInitialURL() {
-                const url = await Linking.getInitialURL();
-                console.log('getInitialURL');
-                // 這邊只有在未開啟APP時，第一次開啟時會比對。
-                if (url) {
-                  try {
-                    const _url = await S_QRcode.redirectByScanUrl(url, navigation);
-                  } catch (e) {
-                    store.dispatch(setInitUrlFromQRcode(url))
-                  }
-                }
-              },
+          <SafeAreaView
+            style={{
+              flex: 1,
+              backgroundColor: Platform.OS === 'android' ? 'white' : $color.primary,
             }}
-            fallback={<ActivityIndicator color="blue" size="large" />}
           >
-            <Stack.Navigator
-              screenOptions={{
-                headerBackTitleVisible: false
+            
+            {Platform.OS === 'android' && (
+              <StatusBar
+                barStyle={Platform.OS === 'android' ? "dark-content" : 'dark-content'}
+                backgroundColor={Platform.OS === 'android' ? "white" : 'black'} // 只對 Android 有效
+                translucent={false}
+              />
+            )}
+
+            <NavigationContainer
+              theme={scheme === 'light' ? MyThemes.light : MyThemes.dark}
+              linking={{
+                prefixes: [
+                  'https://www.esgoal.com/',
+                  'https://ll-esh-app.wasateam.com/',
+                  'esgoal://',
+                  'https://ll-esgoal.dev.wasateam.com/'
+                ],
+                config: {
+                  screens: $ws.$h.route.getDeeplinks()
+                },
+                async getInitialURL() {
+                  const url = await Linking.getInitialURL();
+                  console.log('getInitialURL');
+                  // 這邊只有在未開啟APP時，第一次開啟時會比對。
+                  if (url) {
+                    try {
+                      const _url = await S_QRcode.redirectByScanUrl(url, navigation);
+                    } catch (e) {
+                      store.dispatch(setInitUrlFromQRcode(url))
+                    }
+                  }
+                },
               }}
+              fallback={<ActivityIndicator color="blue" size="large" />}
             >
-              {!isMounted && (
-                <Stack.Screen
-                  name="Init"
-                  options={{
-                    headerShown: false,
-                    cardStyle: { backgroundColor: '#FFFFFF' }
-                  }}
-                  component={ViewInit}
-                />
-              )}
-              {!currentUser && (
-                <>
+              <Stack.Navigator
+                screenOptions={{
+                  headerBackTitleVisible: false
+                }}
+              >
+                {!isMounted && (
                   <Stack.Screen
-                    name="RoutesAuth"
+                    name="Init"
                     options={{
                       headerShown: false,
                       cardStyle: { backgroundColor: '#FFFFFF' }
                     }}
-                    component={RoutesAuth}
-                    initialParams={{ autoFocus: modalVisible ? false : true }}
+                    component={ViewInit}
                   />
-                </>
-              )}
-              {currentUser && (
-                <>
-                  <Stack.Screen
-                    name="RoutesApp"
-                    options={{
-                      headerShown: false,
-                      cardStyle: { backgroundColor: '#FFFFFF' }
-                    }}
-                    component={RoutesApp}
-                  />
-                  <Stack.Screen
-                    name="CameraPage"
-                    component={WsCameraPage}
-                    options={{
-                      headerShown: false,
-                    }}
-                  />
-                </>
-              )}
-            </Stack.Navigator>
-          </NavigationContainer>
-          {$config.app.env.showVersion && (
-            <View
-              style={{
-                zIndex: 99,
-                position: 'absolute',
-                bottom: 10,
-                left: 16,
-                backgroundColor: $color.primary11l,
-                paddingLeft: 8,
-                flex: 0
-              }}>
-              <Text
+                )}
+                {!currentUser && (
+                  <>
+                    <Stack.Screen
+                      name="RoutesAuth"
+                      options={{
+                        headerShown: false,
+                        cardStyle: { backgroundColor: '#FFFFFF' }
+                      }}
+                      component={RoutesAuth}
+                      initialParams={{ autoFocus: modalVisible ? false : true }}
+                    />
+                  </>
+                )}
+                {currentUser && (
+                  <>
+                    <Stack.Screen
+                      name="RoutesApp"
+                      options={{
+                        headerShown: false,
+                        cardStyle: { backgroundColor: '#FFFFFF' }
+                      }}
+                      component={RoutesApp}
+                    />
+                    <Stack.Screen
+                      name="CameraPage"
+                      component={WsCameraPage}
+                      options={{
+                        headerShown: false,
+                      }}
+                    />
+                  </>
+                )}
+              </Stack.Navigator>
+            </NavigationContainer>
+            {$config.app.env.showVersion && (
+              <View
                 style={{
-                  fontWeight: '600',
-                  textAlign: 'center',
-                  includeFontPadding: false
+                  zIndex: 99,
+                  position: 'absolute',
+                  bottom: 10,
+                  left: 16,
+                  backgroundColor: $color.primary11l,
+                  paddingLeft: 8,
+                  flex: 0
                 }}>
-                {axios.defaults?.baseURL}
-              </Text>
-            </View>
-          )}
+                <Text
+                  style={{
+                    fontWeight: '600',
+                    textAlign: 'center',
+                    includeFontPadding: false
+                  }}>
+                  {axios.defaults?.baseURL}
+                </Text>
+              </View>
+            )}
+
+          </SafeAreaView>
         </SafeAreaProvider>
       )}
     </>

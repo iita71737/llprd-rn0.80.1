@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CLIENT_ID</key>
+	<string>606844696768-piue1m78ooblih8hq633a2qqfmbd1322.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.606844696768-piue1m78ooblih8hq633a2qqfmbd1322</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAcB-DNKILnwbIKk9aOldj0FhpVAggPBjk</string>
 	<key>GCM_SENDER_ID</key>
@@ -9,11 +13,11 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.esgoaldev</string>
+	<string>com.ll_esgoal</string>
 	<key>PROJECT_ID</key>
 	<string>ll-esgoal</string>
 	<key>STORAGE_BUCKET</key>
-	<string>ll-esgoal.firebasestorage.app</string>
+	<string>ll-esgoal.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:606844696768:ios:835b3bd26a118b14bf9525</string>
+	<string>1:606844696768:ios:d2a650fd646837b9bf9525</string>
 </dict>
 </plist>

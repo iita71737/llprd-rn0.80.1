@@ -68,7 +68,8 @@ const RoutesMenu = () => {
     <StackSetting.Navigator
       screenOptions={({ route }) => ({
         headerShown: isHeaderVisible(route),
-        tabBarVisible: setRoutesMenuTabBarVisible(route)
+        tabBarVisible: setRoutesMenuTabBarVisible(route),
+        
       })}
       initialRouteName="Menu">
       <StackSetting.Screen

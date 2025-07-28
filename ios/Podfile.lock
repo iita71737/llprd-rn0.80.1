@@ -2854,8 +2854,35 @@ PODS:
   - RNCCheckbox (0.5.16):
     - BEMCheckBox (~> 1.4)
     - React-Core
-  - RNCMaskedView (0.2.7):
+  - RNCMaskedView (0.3.2):
+    - boost
+    - DoubleConversion
+    - fast_float
+    - fmt
+    - glog
+    - hermes-engine
+    - RCT-Folly
+    - RCT-Folly/Fabric
+    - RCTRequired
+    - RCTTypeSafety
     - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-hermes
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - SocketRocket
+    - Yoga
   - RNCPicker (2.11.1):
     - boost
     - DoubleConversion
@@ -3850,7 +3877,7 @@ SPEC CHECKSUMS:
   RNBootSplash: 07805bcd3aaecb26115e56fa39237fbb88a442a8
   RNCAsyncStorage: b03032fdbdb725bea0bd9e5ec5a7272865ae7398
   RNCCheckbox: 75255b03e604bbcc26411eb31c4cbe3e3865f538
-  RNCMaskedView: cb9670ea9239998340eaab21df13fa12a1f9de15
+  RNCMaskedView: aac38cf7e947ff80e483996d1acd43c5ad4ab610
   RNCPicker: 26b69a32728b3ef1e791755c15e3a95f2f58d23e
   RNCPushNotificationIOS: 64218f3c776c03d7408284a819b2abfda1834bc8
   RNDeviceInfo: 5795b418ed3451ebcaf39384e6cf51f60cb931c9
@@ -3877,6 +3904,6 @@ SPEC CHECKSUMS:
   VisionCamera: 0ecfede218b2d989be3d504270b71f3d2384d95d
   Yoga: daa1e4de4b971b977b23bc842aaa3e135324f1f3
 
-PODFILE CHECKSUM: 0c3e4f16ca984e9537048a6b8527aa5ee2d48eea
+PODFILE CHECKSUM: 576a7516f9c671a44c2562be27bd73e3ff353048
 
 COCOAPODS: 1.16.2
