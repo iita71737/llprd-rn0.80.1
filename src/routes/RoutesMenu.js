@@ -68,8 +68,7 @@ const RoutesMenu = () => {
     <StackSetting.Navigator
       screenOptions={({ route }) => ({
         headerShown: isHeaderVisible(route),
-        tabBarVisible: setRoutesMenuTabBarVisible(route),
-        
+        tabBarVisible: setRoutesMenuTabBarVisible(route)
       })}
       initialRouteName="Menu">
       <StackSetting.Screen
@@ -125,7 +124,7 @@ const RoutesMenu = () => {
                       )
                       e.preventDefault();
                     } else if (scopePermission('sos-create', currentUserScope)) {
-                      navigation.navigate('SOS')
+                      navigation.push('SOS')
                     }
                   }}
                 />

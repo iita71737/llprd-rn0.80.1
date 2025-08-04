@@ -3,7 +3,7 @@ import {
   View,
   Text,
   ScrollView,
-  // SafeAreaView,
+  SafeAreaView,
   TouchableHighlight,
   Image,
   StyleSheet,
@@ -43,7 +43,6 @@ import axios from 'axios'
 import S_Factory from '@/services/api/v1/factory'
 import S_Task from '@/services/api/v1/task'
 import VersionCheck from 'react-native-version-check';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Menu = ({ navigation }) => {
   // 不要把翻譯結果存到 state，直接在 render 裡呼叫 t('key')
@@ -268,9 +267,7 @@ const Menu = ({ navigation }) => {
   }, [navigation]);
 
   return (
-    <SafeAreaView
-      style={{ flex: 1 }} edges={['top', 'left', 'right']}
-    >
+    <SafeAreaView>
 
       <View
         style={{

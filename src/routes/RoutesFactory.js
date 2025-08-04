@@ -214,7 +214,7 @@ const RoutesFactory = ({ navigation, route }) => {
         initialRouteName={'MyIndex'}
         screenOptions={({ route }) => ({
           headerShown: false,
-          tabBarShowLabel: false,
+          tabBarShowLabel: false, 
           activeTintColor: $color.primary,
           showLabel: false,
           tabBarVisible: setRoutesMenuTabBarVisible(route),
@@ -229,7 +229,6 @@ const RoutesFactory = ({ navigation, route }) => {
             'RoutesChange',
             'RoutesContractors',
             'Menu',
-            // 'RoutesAlert'
           ].includes(route.name)
             ? () => {
               return null;

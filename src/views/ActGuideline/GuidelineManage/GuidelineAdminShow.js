@@ -87,7 +87,6 @@ import { setCurrentAct } from '@/store/data'
 import S_FactoryTag from '@/services/api/v1/factory_tag'
 import AsyncStorage from '@react-native-community/async-storage'
 import S_ActVersion from '@/services/api/v1/act_version'
-import { WebView } from "react-native-webview";
 import S_Guideline from '@/services/api/v1/guideline'
 import S_GuidelineVersion from '@/services/api/v1/guideline_version'
 import S_GuidelineArticleVersion from '@/services/api/v1/guideline_article_version'
@@ -108,8 +107,7 @@ import guideline_status from '@/services/api/v1/guideline_status'
 
 import RNFS from 'react-native-fs';
 import Share from 'react-native-share';
-// import DocumentPicker from "react-native-document-picker";
-import DocumentPicker from '@react-native-documents/picker'
+import { pick, types } from '@react-native-documents/picker'
 import * as XLSX from "xlsx";
 import { Table, Row, Rows, TableWrapper } from 'react-native-table-component';
 import { check, request, PERMISSIONS, RESULTS, openSettings } from 'react-native-permissions';
@@ -1390,9 +1388,7 @@ const GuidelineAdminShow = ({ navigation, route }) => {
     try {
       console.log("📂 開始選擇 Excel 檔案...");
       // 1️⃣ 打開檔案選擇器
-      const res = await DocumentPicker.pick({
-        type: [DocumentPicker.types.allFiles], // 過濾 Excel 檔案
-      });
+      const res = await pick({});
       if (!res || res.length === 0) {
         console.warn("❌ 沒有選擇檔案");
         return;
@@ -1444,12 +1440,17 @@ const GuidelineAdminShow = ({ navigation, route }) => {
       setColumnWidths(columnWidths);
       Alert.alert("成功", `成功匯入 ${res[0].name}`);
     } catch (error) {
-      if (DocumentPicker.isCancel(error)) {
-        console.warn("🚫 使用者取消選擇");
+      // Android 有 code；iOS 可能只有 message
+      const isCancel =
+        err?.code === 'DOCUMENT_PICKER_CANCELED' ||
+        err?.message?.includes('user canceled') ||
+        err?.message?.includes('The operation was cancelled')
+      if (isCancel) {
+        console.log('✅ 使用者取消選擇')
       } else {
-        console.error("❌ 發生錯誤:", error);
+        console.error('❌ 發生其他錯誤:', err)
       }
-    } ``
+    }
     setExcelLoading(false)
   };
 

@@ -43,6 +43,7 @@ const WsHeader = props => {
         style={{
           backgroundColor: $color.primary,
           width: windowWidth,
+          height: height,
           padding: 16,
         }}>
         <WsFlex>
